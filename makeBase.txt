@@ -1,41 +1,16 @@
-CREATE TABLE addresses
+CREATE TABLE status
 (
-    id SERIAL PRIMARY KEY  NOT NULL,
-    city VARCHAR(90),
-    state VARCHAR(90),
-    country VARCHAR(90)
-);
-
-CREATE TABLE customers
-(
-    id SERIAL PRIMARY KEY NOT NULL,
-    firstname VARCHAR(90),
-    lastname VARCHAR(90),
-    email VARCHAR(90) UNIQUE, 
-    password VARCHAR(90),
-    phone VARCHAR(20) UNIQUE,
-    addressId INT8 REFERENCES addresses(id) ON DELETE CASCADE
-    
-);
-
-CREATE TABLE paidType
-(
-    id SERIAL PRIMARY KEY  NOT NULL,
+    id SERIAL PRIMARY KEY,
     name VARCHAR(90)
 );
 
-CREATE TABLE customersPaidTypes
+CREATE TABLE orders
 (
-    id SERIAL PRIMARY KEY NOT NULL,
-    customersId INT8 REFERENCES customers(id) ON DELETE CASCADE,
-    paidTypeId INT8 REFERENCES paidType(id) ON DELETE CASCADE,
-    UNIQUE(customersId, paidTypeId)
+    id SERIAL PRIMARY KEY,
+    offerid INT8 REFERENCES offers(id),
+    name VARCHAR(90),
+    deliveryTime timestamp,
+    statusid INT8 REFERENCES status(id) ON DELETE CASCADE,
+    customerid INT8 REFERENCES customers(id),
+    paid boolean
 );
-
-
-CREATE TABLE user_security (
-    id Serial PRIMARY KEY,
-    username VARCHAR(45),
-    password VARCHAR(60)
-);
-

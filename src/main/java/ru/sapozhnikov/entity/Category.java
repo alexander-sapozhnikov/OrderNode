@@ -6,12 +6,10 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name="user_security")
-public class UserSecurity {
+@Table(name = "categories")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String username;
-    private String password;
-    private String token;
+    private int id;
+    private String name;
 }

@@ -3,6 +3,5 @@ package ru.sapozhnikov.dao;
 import org.springframework.data.repository.CrudRepository;
 import ru.sapozhnikov.entity.Customer;
 
-public interface CustomerDAO extends CrudRepository<Customer, Long> {
-    Customer getById(int id);
+public interface CustomerDAO extends CrudRepository<Customer, Integer> {
 }
